@@ -1,5 +1,5 @@
 # Use a base image with OpenJDK 17
-FROM openjdk:21-jdk as builder
+FROM openjdk:21-jdk-slim as builder
 
 # Set the working directory
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY src /app/src
 RUN mvn clean package -DskipTests
 
 # Use the final image with a JRE to run the application
-FROM openjdk:21-jre
+FROM openjdk:21-jre-slim
 
 # Set the working directory
 WORKDIR /app
